@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "http://atom.albicom.ru:5001",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

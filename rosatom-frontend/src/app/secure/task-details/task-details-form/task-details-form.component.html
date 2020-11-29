@@ -1,0 +1,85 @@
+<ng-container *ngIf="employees$ | async as employees">
+  <ng-container *ngIf="task$ | async as task">
+    <form class="flexible-form" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="flexible-field">
+        <mat-form-field appearance="standard">
+          <mat-label>{{ taskTranslations.caption }}</mat-label>
+          <input matInput formControlName="caption" placeholder="" />
+        </mat-form-field>
+      </div>
+      <div class="flexible-field">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ taskTranslations.author }}</mat-label>
+          <mat-select formControlName="author">
+            <mat-option [value]="employee.id" *ngFor="let employee of employees"
+              >{{ employee.name }} {{ employee.lastname }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flexible-field">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ taskTranslations.executor }}</mat-label>
+          <mat-select formControlName="executor">
+            <mat-option [value]="executor.id" *ngFor="let executor of employees"
+              >{{ executor.name }} {{ executor.lastname }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flexible-field">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ taskTranslations.prior }}</mat-label>
+          <mat-select formControlName="prior">
+            <mat-option [value]="item" *ngFor="let item of priorities">{{
+              getPriorTranslations(item)
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flexible-field">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ taskTranslations.status }}</mat-label>
+          <mat-select formControlName="status">
+            <mat-option [value]="item" *ngFor="let item of priorities">{{
+              getStatusTranslations(item)
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flexible-field">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ taskTranslations.description }}</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="flexible-field">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ taskTranslations.deadline }}</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="deadline" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="actions">
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+        <div class="button">
+          <button
+            [disabled]="!form.valid"
+            type="submit"
+            color="success"
+            mat-raised-button
+          >
+            Сохранить
+          </button>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+</ng-container>

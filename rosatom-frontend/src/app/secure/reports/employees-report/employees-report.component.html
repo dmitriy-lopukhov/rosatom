@@ -1,0 +1,24 @@
+<ngx-charts-bar-horizontal-2d
+  *ngIf="data$ | async as data"
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="data"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [legendPosition]="legendPosition"
+  [legendTitle]="legendTitle"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)"
+  [xAxisTickFormatting]="xAxisTickFormatting"
+  [xAxisTicks]="ticks"
+>
+</ngx-charts-bar-horizontal-2d>
+<!-- [view]="view" -->
+<!-- [schemeType]="schemeType" -->

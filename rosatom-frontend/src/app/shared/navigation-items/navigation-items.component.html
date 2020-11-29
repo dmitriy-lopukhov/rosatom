@@ -1,0 +1,12 @@
+<h3>Навигация</h3>
+<mat-selection-list [multiple]="false">
+  <mat-list-option
+    [routerLink]="link.path"
+    *ngFor="let link of links"
+    [value]="link.title"
+  >
+    {{ link.title }}
+  </mat-list-option>
+  <!-- <hr /> -->
+  <!-- <mat-list-option> Мои задачи </mat-list-option> -->
+</mat-selection-list>

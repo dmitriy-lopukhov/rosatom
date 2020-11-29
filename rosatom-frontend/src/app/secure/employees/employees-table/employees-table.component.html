@@ -1,0 +1,77 @@
+<div class="search">
+  <mat-form-field>
+    <mat-label>Поиск</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input />
+  </mat-form-field>
+</div>
+
+<div class="table mat-elevation-z8" *ngIf="dataSource">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ employeeTranslations.id }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.id }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ employeeTranslations.name }}
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ employeeTranslations.lastname }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.lastname }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="patronym">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ employeeTranslations.patronym }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.patronym }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ employeeTranslations.position }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-chip-list>
+          <mat-chip>
+            {{ row.position }}
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ employeeTranslations.phone }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.phone }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="9">
+        {{ getEmtpyMessage(input.value) }}
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

@@ -1,0 +1,25 @@
+<form class="flexible-form" [formGroup]="form">
+  <div class="spacer"></div>
+  <div class="flexible-field">
+    <mat-form-field appearance="fill">
+      <mat-label>Подразделение</mat-label>
+
+      <mat-select formControlName="orgunit">
+        <mat-option [value]="-1"> Все </mat-option>
+        <mat-option [value]="orgunit" *ngFor="let orgunit of orgunits$ | async">
+          {{ orgunit }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flexible-field">
+    <mat-form-field appearance="fill">
+      <mat-label>Тип</mat-label>
+      <mat-select formControlName="type">
+        <mat-option [value]="item.key" *ngFor="let item of types">
+          {{ item.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<form class="flexible-form" [formGroup]="form">
+  <div class="spacer"></div>
+  <div class="flexible-field">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ taskTranslations.prior }}</mat-label>
+      <mat-select formControlName="prior">
+        <mat-option [value]="item" *ngFor="let item of priorities">{{
+          getPriorTranslations(item)
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flexible-field">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ taskTranslations.status }}</mat-label>
+      <mat-select formControlName="status">
+        <mat-option [value]="item" *ngFor="let item of priorities">{{
+          getStatusTranslations(item)
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>

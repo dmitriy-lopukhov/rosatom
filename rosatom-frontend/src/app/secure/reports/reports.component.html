@@ -1,0 +1,25 @@
+<mat-drawer-container class="sidebar-container" autosize>
+  <mat-drawer #drawer class="sidebar" mode="side" [opened]="showSidebar">
+    <app-avatar-menu></app-avatar-menu>
+    <app-navigation-items></app-navigation-items>
+  </mat-drawer>
+
+  <div class="sidebar-content">
+    <app-navbar (menuToggle)="onMenuToggle()"></app-navbar>
+    <div class="panel">
+      <h3 class="page-title">Отчеты</h3>
+
+      <mat-tab-group animationDuration="0ms" [selectedIndex]="currentTabIndex">
+        <mat-tab label="По подразделениям">
+          <app-filters
+            (filtersChanged)="onFiltersChanged($event)"
+          ></app-filters>
+          <app-employees-report [filters]="filters"></app-employees-report>
+        </mat-tab>
+        <mat-tab label="По срокам">
+          <app-timechart></app-timechart>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</mat-drawer-container>

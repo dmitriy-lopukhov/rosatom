@@ -1,0 +1,21 @@
+:host {
+  margin: 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.flexible-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flexible-field {
+  margin-left: 20px;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.actions {
+  width: 100%;
+}

@@ -1,0 +1,44 @@
+<mat-card>
+  <app-logo></app-logo>
+  <mat-card-title>ТРЕКЕР</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Логин</mat-label>
+        <input matInput formControlName="username" placeholder="" />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Пароль</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+
+    <p *ngIf="error" class="error">
+      {{ error }}
+    </p>
+
+    <div class="button">
+      <button [disabled]="!form.valid" type="submit" mat-raised-button>
+        Войти
+      </button>
+    </div>
+  </form>
+  <mat-card-content> </mat-card-content>
+</mat-card>

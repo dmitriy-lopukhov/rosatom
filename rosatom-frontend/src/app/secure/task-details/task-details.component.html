@@ -1,0 +1,24 @@
+<mat-drawer-container class="sidebar-container" autosize>
+  <mat-drawer #drawer class="sidebar" mode="side" [opened]="showSidebar">
+    <app-avatar-menu></app-avatar-menu>
+    <app-navigation-items></app-navigation-items>
+  </mat-drawer>
+
+  <div class="sidebar-content">
+    <app-navbar (menuToggle)="onMenuToggle()"></app-navbar>
+    <div class="panel">
+      <h3 class="page-title" *ngIf="currentTask$ | async as currentTask">
+        {{ currentTask.caption }}
+      </h3>
+      <mat-tab-group animationDuration="0ms" [selectedIndex]="currentTabIndex">
+        <mat-tab label="Информация">
+          <app-task-details-form></app-task-details-form>
+        </mat-tab>
+        <mat-tab label="Связанные задачи">
+          <app-linked-tasks></app-linked-tasks>
+        </mat-tab>
+        <mat-tab label="Отчеты"> </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</mat-drawer-container>

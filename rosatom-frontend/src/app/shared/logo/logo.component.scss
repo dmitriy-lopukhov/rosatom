@@ -1,0 +1,8 @@
+:host {
+  text-align: center;
+  display: block;
+  > img {
+    max-width: 50px;
+    margin-bottom: 10px;
+  }
+}
